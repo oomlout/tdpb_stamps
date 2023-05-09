@@ -3,19 +3,26 @@
 //stamp dimensions
 border = 3;
 width = 20;
-height = 15;
-depth = 10;
+height = 20;
+depth = 5;
 
 
+//which style you want to do "text" for text and "pattern" for pattern
 //style = "text";
-//style = "dxf";
-style = "text";
+//style = "pattern";
+style = "pattern";
 
 depth_stamp = 3;
-text = "test";
+text = "test1";
 font = "Arial";
-text="N";
-font = "Webdings";
+//text="N";
+//font = "Webdings";
+
+//pattern variables
+//svg worked better than dxf for me
+//put the file in the same directory
+pattern = "heart.svg";
+
 
 //draw stamp
 translate([-border,-border,0]){
@@ -31,11 +38,11 @@ if(style == "text"){
     }
 }
 
-if(style == "dxf"){
+if(style == "pattern"){
     //add the text
     translate([0,0,depth]){
         linear_extrude(depth_stamp){
-            import("heart.svg");
+            import(pattern);
         }
     }
 }
